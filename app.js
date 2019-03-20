@@ -40,6 +40,31 @@ app.put('/:id',(req,res)=>{
     });
 });
 
+app.post('/',(req,res)=>{
+    const userInput =req.body;
+    db.getDB().collection(collection).insertOne(userInput,(err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.json({result: result, document:result.ops[0]})
+        }
+    });
+});
+
+
+app.delete('/:id',(req,res)=>{
+    const todoID = req.params.id;
+    db.getDB().collection(collection).findOneAndDelete({_id : db.getPrimaryKey(todoID)},(err,result)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.json(result);
+        }
+    });
+});
+
+
+
 // db connection
 db.connect((err)=>{
   if(err){
