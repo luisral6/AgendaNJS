@@ -10,11 +10,11 @@ const app = express();
 // schema used for data validation for our todo document
 const schema = Joi.object().keys({
     name : Joi.string().required(),
-    lastName : ,
-    address : ,
-    email : ,
-    phone : ,
-    phoneType :,
+    lastName :  Joi.string() ,
+    address :  Joi.string() ,
+    email : Joi.string().email(),
+    phone : Joi.string().regex(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/).required() ,
+    phoneType :  Joi.string().required()
 
 });
 

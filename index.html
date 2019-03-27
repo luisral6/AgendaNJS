@@ -17,9 +17,34 @@
         <div class="col-lg-8">
             <form id="form">
                 <div class="form-group">
-                    <label for="todoUserInput">Todo</label>
-                    <input type="text" class="form-control" id="todoUserInput" placeholder="Todo">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <td >
+                        <label for="name">Todo</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </td>
+                    <td >
+                        <label for="lastName">Todo</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                    </td>
+                    <td >
+                        <label for="address">Todo</label>
+                        <input type="text" class="form-control" id="address" placeholder="Address">
+                    </td>
+                    <td >
+                        <label for="email">Todo</label>
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                    </td>
+                    <td >
+                        <label for="phone">Todo</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone">
+                    </td>
+                    <td >
+                        <label for="phoneType">Todo</label>
+                        <input type="text" class="form-control" id="phoneType" placeholder="Phone Type">
+                    </td>
+                    <td >
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </td>
+
                 </div>
 
             </form>
@@ -29,9 +54,8 @@
     <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <ul class="list-group" id="display">
-
-            </ul>
+            <table id="display" class="table">
+            </table>
         </div>
         <div class="col-lg-2"></div>
     </div>
@@ -100,7 +124,15 @@
                     headers : {
                         "Content-Type" : "application/json; charset=utf-8"
                     },
-                    body : JSON.stringify({todo : todoUserInput.val()})
+                    body : JSON.stringify({
+                        name : $("#name").val(),
+                        lastName : $("#lastName").val(),
+                        address : $("#address").val(),
+                        email : $("#email").val(),
+                        phone : $("#phone").val(),
+                        phoneType : $("#phoneType").val()
+
+                    })
                 }).then((response)=>{
                     return response.json();
                 }).then((data)=>{
@@ -139,32 +171,61 @@
         }
 
         const buildTemplate = (todo,ids)=>{
-            return `<li class="list-group-item" id="${ids.listItemID}">
-                            <div class="row">
-                                <div class="col-md-4" id="${ids.todoID}">${todo.todo}</div>
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4 text-right">
-                                    <button type="button" class="btn btn-secondary" id="${ids.editID}">Edit</button>
-                                    <button type="button" class="btn btn-danger" id="${ids.deleteID}">Delete</button>
-                                </div>
-                            </div>
-                       </li>`;
+            return `<tr  id="${ids.listItemID}">
+                                    <td id="${ids.todoID}" >${todo.name ||''}</td>
+                                    <td >${todo.lastName||''}</td>
+                                    <td >${todo.address||''}</td>
+                                    <td >${todo.email||''}</td>
+                                    <td >${todo.phone||''}</td>
+                                    <td >${todo.phoneType||''}</td>
+                                    <td >
+                                        <button type="button" class="btn btn-secondary" id="${ids.editID}">Edit</button>
+                                        <button type="button" class="btn btn-danger" id="${ids.deleteID}">Delete</button>
+                                    </td>
+
+
+                       </tr>`;
         }
 
         const displayTodos = (data)=>{
+            display.append('<thead>\n' +
+                '    <tr>\n' +
+                '      <th scope="col">Name</th>\n' +
+                '      <th scope="col">Last Name</th>\n' +
+                '      <th scope="col">Address</th>\n' +
+                '      <th scope="col">Email</th>\n' +
+                '      <th scope="col">Phone</th>\n' +
+                '      <th scope="col">Phone Type</th>\n' +
+                '      <th scope="col"> </th>\n' +
+                '    </tr>\n' +
+                '  </thead>');
+            display.append('<tbody id="tableID">');
+            display.append('</tbody>');
+
+            let tableVar = $("#tableID");
             data.forEach((todo)=>{
                 let ids = buildIDS(todo);
-                display.append(buildTemplate(todo,ids));
+                tableVar.append(buildTemplate(todo,ids));
                 editTodo(todo,ids.todoID,ids.editID);
                 deleteTodo(todo,ids.listItemID,ids.deleteID);
             });
+
         }
 
         form.submit((e)=>{
             e.preventDefault();
+            console.log("input = "+todoUserInput.val());
             fetch('/',{
                 method : 'post',
-                body : JSON.stringify({todo : todoUserInput.val()}),
+                body : JSON.stringify({
+                    name : $("#name").val(),
+                    lastName : $("#lastName").val(),
+                    address : $("#address").val(),
+                    email : $("#email").val(),
+                    phone : $("#phone").val(),
+                    phoneType : $("#phoneType").val()
+
+                }),
                 headers : {
                     "Content-Type" : "application/json; charset=utf-8"
                 }
