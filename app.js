@@ -54,7 +54,14 @@ app.put('/:id',(req,res,next)=>{
             next(error);
         }
         else{
-            db.getDB().collection(collection).findOneAndUpdate({_id : db.getPrimaryKey(todoID)},{$set : {todo : userInput.todo}},{returnOriginal : false},(err,result)=>{
+            db.getDB().collection(collection).findOneAndUpdate({_id : db.getPrimaryKey(todoID)},{$set : {
+                    name : userInput.name,
+                    lastName: userInput.lastName,
+                    address: userInput.address,
+                    email: userInput.email,
+                    phone: userInput.phone,
+                    phoneType: userInput.phoneType
+            }},{returnOriginal : false},(err,result)=>{
                 if(err)
                     console.log(err);
                 else{
