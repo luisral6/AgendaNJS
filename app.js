@@ -41,11 +41,8 @@ app.get('/getTodos',(req,res)=>{
 
 // update
 app.put('/:id',(req,res,next)=>{
-    // Primary Key of Todo Document we wish to update
     const todoID = req.params.id;
-    // Document used to update
     const userInput = req.body;
-    // Find Document By ID and Update
 
     Joi.validate(userInput,schema,(err,result)=>{
         if(err){
