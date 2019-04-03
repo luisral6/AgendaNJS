@@ -49,7 +49,7 @@ app.put('/:id',(req,res,next)=>{
 
     Joi.validate(userInput,schema,(err,result)=>{
         if(err){
-            const error = new Error("Invalid Input");
+            const error = new Error("Input invalido");
             error.status = 400;
             next(error);
         }
@@ -84,19 +84,19 @@ app.post('/',(req,res,next)=>{
     // else insert document within todo collection
     Joi.validate(userInput,schema,(err,result)=>{
         if(err){
-            const error = new Error("Invalid Input");
+            const error = new Error("Input invalido");
             error.status = 400;
             next(error);
         }
         else{
             db.getDB().collection(collection).insertOne(userInput,(err,result)=>{
                 if(err){
-                    const error = new Error("Failed to insert Todo Document");
+                    const error = new Error("Error al guardar el contacto");
                     error.status = 400;
                     next(error);
                 }
                 else
-                    res.json({result : result, document : result.ops[0],msg : "Successfully inserted Todo!!!",error : null});
+                    res.json({result : result, document : result.ops[0],msg : "Contacto guardado",error : null});
             });
         }
     })
@@ -132,7 +132,7 @@ db.connect((err)=>{
     // If err unable to connect to database
     // End application
     if(err){
-        console.log('unable to connect to database');
+        console.log('Error al conectarse a la DB');
         process.exit(1);
     }
     // Successfully connected to database
@@ -140,7 +140,7 @@ db.connect((err)=>{
     // And listen for Request
     else{
         app.listen(3000,()=>{
-            console.log('connected to database, app listening on port 3000');
+            console.log('Conectado a la DB. Usando el puerto 3000');
         });
     }
 });

@@ -13,8 +13,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+        <div class="col-lg-4">
             <form id="form">
                 <div class="form-group">
                     <td >
@@ -39,7 +38,11 @@
                     </td>
                     <td >
                         <label for="phoneType">Phone Type</label>
-                        <input type="text" class="form-control" id="phoneType" placeholder="Phone Type">
+                        <select class="form-control" id="phoneType">
+                            <option value="Work">Work</option>
+                            <option value="Home">Home</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </td>
                     <td >
                         <button type="submit" class="btn btn-primary">Create</button>
@@ -48,28 +51,17 @@
                 </div>
 
             </form>
+
+            <div class="alert" role="alert" id="message">
+
+            </div>
+
         </div>
-        <div class="col-lg-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-lg-2"></div>
         <div class="col-lg-8">
             <table id="display" class="table">
             </table>
         </div>
-        <div class="col-lg-2"></div>
     </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
-            <div class="alert" role="alert" id="message">
-
-            </div>
-        </div>
-        <div class="col-lg-2"></div>
-    </div>
-
 </div>
 
 <!-- Optional JavaScript -->
@@ -117,6 +109,7 @@
         }
 
         const editTodo = (todo,todoID,editID)=>{
+            console.log($("#phoneType").children("option:selected").val());
             let editBtn = $(`#${editID}`);
             editBtn.click(()=>{
 
@@ -131,21 +124,22 @@
                         address : $("#address").val(),
                         email : $("#email").val(),
                         phone : $("#phone").val(),
-                        phoneType : $("#phoneType").val()
+                        phoneType : $("#phoneType option:selected").text()
 
                     })
                 }).then((response)=>{
                     return response.json();
                 }).then((data)=>{
                     if(data.ok == 1){
+                        console.log(data.value);
                         //let todoIndex = $(`#${todoID}`);
                         //todoIndex.html(data.value.todo);
                         $("#listItem_" + data.value._id + " .name").text(data.value.name);
                         $("#listItem_" + data.value._id + " .lastName").text(data.value.lastName);
-                        $("#listItem_" + data.value._id + ".address").text(data.value.address);
+                        $("#listItem_" + data.value._id + " .address").text(data.value.address);
                         $("#listItem_" + data.value._id + " .email").text(data.value.email);
-                        $("#listItem_" + data.value._id + ".phone").text(data.value.phone);
-                        $("#listItem_" + data.value._id + ".phoneType").text(data.value.phoneType);
+                        $("#listItem_" + data.value._id + " .phone").text(data.value.phone);
+                        $("#listItem_" + data.value._id + " .phoneType").text(data.value.phoneType);
 
                         resetTodosInput();
                     }
@@ -222,7 +216,6 @@
 
         form.submit((e)=>{
             e.preventDefault();
-            console.log("input = "+todoUserInput.val());
             fetch('/',{
                 method : 'post',
                 body : JSON.stringify({
@@ -231,7 +224,7 @@
                     address : $("#address").val(),
                     email : $("#email").val(),
                     phone : $("#phone").val(),
-                    phoneType : $("#phoneType").val()
+                    phoneType : $("#phoneType option:selected").text()
 
                 }),
                 headers : {
