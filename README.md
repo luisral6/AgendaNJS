@@ -7,10 +7,10 @@
 ## What type of applications the framework is best suited for?
 ## GIFs
 ### Create
-![](Create.gif)
+![](NodeCreate.gif)
 ### Read
-![](Read.gif)
+![](NodeRead.gif)
 ### Update
-![](Update.gif)
+![](NodeUpdate.gif)
 ### Delete
-![](Delete.gif)
+![](NodeDelete.gif)
