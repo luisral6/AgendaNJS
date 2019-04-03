@@ -6,8 +6,6 @@ const Joi = require('joi');
 const db = require("./db");
 const collection = "todo";
 const app = express();
-
-// schema used for data validation for our todo document
 const schema = Joi.object().keys({
     name : Joi.string().required(),
     lastName :  Joi.string() ,
@@ -18,15 +16,14 @@ const schema = Joi.object().keys({
 
 });
 
-// parses json data sent to us by the user
 app.use(bodyParser.json());
 
-// serve static html file to user
+
 app.get('/',(req,res)=>{
     res.sendFile(path.join(__dirname,'index.html'));
 });
 
-// read
+
 app.get('/getTodos',(req,res)=>{
     // get all Todo documents within our todo collection
     // send back to user as json
@@ -39,7 +36,7 @@ app.get('/getTodos',(req,res)=>{
     });
 });
 
-// update
+
 app.put('/:id',(req,res,next)=>{
     const todoID = req.params.id;
     const userInput = req.body;
@@ -71,14 +68,9 @@ app.put('/:id',(req,res,next)=>{
 });
 
 
-//create
 app.post('/',(req,res,next)=>{
-    // Document to be inserted
     const userInput = req.body;
 
-    // Validate document
-    // If document is invalid pass to error middleware
-    // else insert document within todo collection
     Joi.validate(userInput,schema,(err,result)=>{
         if(err){
             const error = new Error("Input invalido");
@@ -100,8 +92,6 @@ app.post('/',(req,res,next)=>{
 });
 
 
-
-//delete
 app.delete('/:id',(req,res)=>{
     // Primary Key of Todo Document
     const todoID = req.params.id;
@@ -114,8 +104,7 @@ app.delete('/:id',(req,res)=>{
     });
 });
 
-// Middleware for handling Error
-// Sends Error Response Back to User
+
 app.use((err,req,res,next)=>{
     res.status(err.status).json({
         error : {
