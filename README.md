@@ -11,6 +11,6 @@
 ### Read
 ![](NodeRead.gif)
 ### Update
-![](NodeUpdate.gif)
+![](NodeEdit.gif)
 ### Delete
 ![](NodeDelete.gif)
