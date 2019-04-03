@@ -138,14 +138,14 @@
                     return response.json();
                 }).then((data)=>{
                     if(data.ok == 1){
-                        let todoIndex = $(`#${todoID}`);
-                        todoIndex.html(data.value.todo);
-                        $("#name").text(data.name);
-                        $("#lastName").text(data.lastName);
-                        $("#address").text(data.address);
-                        $("#email").text(data.email);
-                        $("#phone").text(data.phone);
-                        $("#phoneType").text(data.phoneType);
+                        //let todoIndex = $(`#${todoID}`);
+                        //todoIndex.html(data.value.todo);
+                        $("#listItem_" + data.value._id + " .name").text(data.value.name);
+                        $("#listItem_" + data.value._id + " .lastName").text(data.value.lastName);
+                        $("#listItem_" + data.value._id + ".address").text(data.value.address);
+                        $("#listItem_" + data.value._id + " .email").text(data.value.email);
+                        $("#listItem_" + data.value._id + ".phone").text(data.value.phone);
+                        $("#listItem_" + data.value._id + ".phoneType").text(data.value.phoneType);
 
                         resetTodosInput();
                     }
@@ -180,12 +180,12 @@
 
         const buildTemplate = (todo,ids)=>{
             return `<tr  id="${ids.listItemID}">
-                                    <td id="${ids.todoID}" >${todo.name ||''}</td>
-                                    <td >${todo.lastName||''}</td>
-                                    <td >${todo.address||''}</td>
-                                    <td >${todo.email||''}</td>
-                                    <td >${todo.phone||''}</td>
-                                    <td >${todo.phoneType||''}</td>
+                                    <td id="${ids.todoID}" class="name" >${todo.name ||''}</td>
+                                    <td class="lastName" >${todo.lastName||''}</td>
+                                    <td class="address" >${todo.address||''}</td>
+                                    <td class="email" >${todo.email||''}</td>
+                                    <td class="phone" >${todo.phone||''}</td>
+                                    <td class="phoneType" >${todo.phoneType||''}</td>
                                     <td >
                                         <button type="button" class="btn btn-secondary" id="${ids.editID}">Edit</button>
                                         <button type="button" class="btn btn-danger" id="${ids.deleteID}">Delete</button>
