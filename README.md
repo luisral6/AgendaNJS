@@ -23,7 +23,7 @@
 - InteliJ WebStorm: powerful IDE with a assistance for writing code in JS.
 - Brackets: an open-source project started by Adobe systems.
 - Eclipse: famous for Java development. It has a plugins for almost any lanaguage.
-- SublimeText
+- SublimeText: minimal yet functional. 
 
 ## What type of applications the framework is best suited for?
 
