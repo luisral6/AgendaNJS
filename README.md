@@ -18,6 +18,10 @@
 
 ## More common technologies used with the platform/framework
 
+- MongoDB : document-oriented database program.
+- Express.js : robust tooling for HTTP servers.
+- AngularJS :  front-end web framework mainly maintained by Google.
+
 ## Most popular IDEs
 
 - InteliJ WebStorm: powerful IDE with a assistance for writing code in JS.
@@ -41,3 +45,4 @@
 https://www.software-developer-india.com/advantages-and-disadvantages-of-node-js/
 https://jaxenter.com/top-5-ides-node-js-147667.html
 https://codecondo.com/best-ide-for-node-js/
+https://en.wikipedia.org/wiki/MEAN_(software_bundle)
