@@ -38,6 +38,7 @@
 
 ## What type of applications the framework is best suited for?
 
+For organizations that prefer to use only one language in the whole project. Also it is best suited for projects that require a no relational database. Because the usage of adblockers is growing in website users, MEAN is not recommended if the inteded user is in said segment. 
 
 ## GIFs
 ### Create
