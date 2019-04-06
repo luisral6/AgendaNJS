@@ -3,10 +3,12 @@
 ## Advantages and disadvantages of the programming language.
 
 ### Advantages
+
 - It can be used both in the frontend and in the backend.
 - Can take advantage of NPM.
 
 ### Disadvantages
+
 - CPU intensive.
 - Underdeveloped tools for relational databases.
 
@@ -41,13 +43,21 @@
 For organizations that prefer to use only one language in the whole project. Also it is best suited for projects that require a no relational database. Because the usage of adblockers is growing in website users, MEAN is not recommended if the inteded user is in said segment. 
 
 ## GIFs
+
 ### Create
+
 ![](NodeCreate.gif)
+
 ### Read
+
 ![](NodeRead.gif)
+
 ### Update
+
 ![](NodeEdit.gif)
+
 ### Delete
+
 ![](NodeDelete.gif)
 
 ## Sources
