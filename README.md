@@ -14,7 +14,14 @@
 
 ### Advantages
 
+- Javascript is the only language needed for the stack. 
+- Highly flexible: You can test your app even during the development process, and host it on the cloud.
+- Scalable:all code is separated in MEAN.
+
 ### Disadvantages
+
+- Security exploits: the stack is still considered less safe from a data security standpoint. The fact that the oldest core software within the architecture is only ten years old at best, this means MEAN will be a prime target for hackers looking to take advantage of its relative youth.
+- No SQL:  Relational databases are still  more reliable and stable.
 
 ## Most common technologies used with the platform/framework
 
@@ -30,6 +37,7 @@
 - SublimeText: minimal yet functional. 
 
 ## What type of applications the framework is best suited for?
+
 
 ## GIFs
 ### Create
@@ -51,3 +59,6 @@ https://codecondo.com/best-ide-for-node-js/
 
 https://en.wikipedia.org/wiki/MEAN_(software_bundle)
 
+https://www.bizepic.com/2018/07/14/mean-stack-for-app-development-the-pros-and-cons/
+
+https://www.software-developer-india.com/advantages-and-disadvantages-of-the-mean-stack/
