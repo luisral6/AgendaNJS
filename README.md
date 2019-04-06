@@ -16,7 +16,7 @@
 
 ### Disadvantages
 
-## More common technologies used with the platform/framework
+## Most common technologies used with the platform/framework
 
 - MongoDB : document-oriented database program.
 - Express.js : robust tooling for HTTP servers.
